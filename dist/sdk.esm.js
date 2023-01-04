@@ -210,7 +210,7 @@ var AVALANCHE_FUJI = {
   chain_id: 43113,
   name: 'Avalanche Fuji',
   symbol: 'AVAX',
-  png_symbol: 'fujiPNG',
+  png_symbol: 'dPNG',
   mainnet: false,
   evm: true,
   logo: 'https://raw.githubusercontent.com/pangolindex/sdk/master/src/images/chains/avax.png',
@@ -219,7 +219,7 @@ var AVALANCHE_FUJI = {
   supported_by_gelato: false,
   rpc_uri: 'https://api.avax-test.network/ext/bc/C/rpc',
   contracts: {
-     png: '0xBBfeDb04Cc7d030d29Cc34dd0081f062C4C78818',
+    png: '0xBBfeDb04Cc7d030d29Cc34dd0081f062C4C78818',
     factory: '0xd17c8AD27f7B3c163BD88008f04cfAd75f0Af228',
     router: '0x2B6B2abAA42c82611D7dBc8Faa5C82cC08Edd960',
     router_daas: '0xFE97f59B72eEE0F29F93e12195C6F35DCdAB6899',
@@ -240,7 +240,7 @@ var AVALANCHE_FUJI = {
     revenue_distributor: "0x9f4bbFF2792C3d5BEEf445392018B7e42068b48b",
     fee_collector: "0xa52Fb206df12Ca7E9cd09Ac9B2Af2327242e8A08",
     multicall: '0xb465Fd2d9C71d5D6e6c069aaC9b4E21c69aAA78f',
-     staking: [{
+    staking: [{
       address: "0x1C448add41b92E2201a51FB18d06556041e51795",
       active: true,
       reward_token: "0xBBfeDb04Cc7d030d29Cc34dd0081f062C4C78818",
@@ -1558,7 +1558,7 @@ function _isNativeReflectConstruct() {
   if (typeof Proxy === "function") return true;
 
   try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () { }));
     return true;
   } catch (e) {
     return false;
@@ -1743,7 +1743,7 @@ function validateAndParseAddress(address) {
     process.env.NODE_ENV !== "production" ? warning(address === checksummedAddress, address + " is not checksummed.") : void 0;
     return checksummedAddress;
   } catch (error) {
-     process.env.NODE_ENV !== "production" ? invariant(false, address + " is not a valid address.") : invariant(false) ;
+    process.env.NODE_ENV !== "production" ? invariant(false, address + " is not a valid address.") : invariant(false);
   }
 }
 function parseBigintIsh(bigintIsh) {
@@ -1770,7 +1770,7 @@ function sqrt(y) {
   return z;
 }
 function abs(x) {
-  if (JSBI.lessThan(x, ZERO)) return JSBI.multiply(x, JSBI.BigInt(-1));else return x;
+  if (JSBI.lessThan(x, ZERO)) return JSBI.multiply(x, JSBI.BigInt(-1)); else return x;
 } // given an array of items sorted by `comparator`, insert an item into its sort index and constrain the size to
 // `maxSize` by removing the last item
 
@@ -1790,7 +1790,7 @@ function sortedInsert(items, add, maxSize, comparator) {
     }
 
     var lo = 0,
-        hi = items.length;
+      hi = items.length;
 
     while (lo < hi) {
       var mid = lo + hi >>> 1;
@@ -1815,18 +1815,18 @@ var _Currency$CURRENCY;
  */
 
 var Currency =
-/**
- * Constructs an instance of the base class `Currency`. The only instance of the base class `Currency` is `Currency.ETHER`.
- * @param decimals decimals of the currency
- * @param symbol symbol of the currency
- * @param name of the currency
- */
-function Currency(decimals, symbol, name) {
-  validateSolidityTypeInstance(JSBI.BigInt(decimals), SolidityType.uint8);
-  this.decimals = decimals;
-  this.symbol = symbol;
-  this.name = name;
-};
+  /**
+   * Constructs an instance of the base class `Currency`. The only instance of the base class `Currency` is `Currency.ETHER`.
+   * @param decimals decimals of the currency
+   * @param symbol symbol of the currency
+   * @param name of the currency
+   */
+  function Currency(decimals, symbol, name) {
+    validateSolidityTypeInstance(JSBI.BigInt(decimals), SolidityType.uint8);
+    this.decimals = decimals;
+    this.symbol = symbol;
+    this.name = name;
+  };
 /**
  * The only instance of the base class `Currency`.
  */
@@ -1877,13 +1877,13 @@ var Token = /*#__PURE__*/function (_Currency) {
 
     return this.chainId === other.chainId && this.address === other.address;
   }
-  /**
-   * Returns true if the address of this token sorts before the address of the other token
-   * @param other other token to compare
-   * @throws if the tokens have the same address
-   * @throws if the tokens are on different chains
-   */
-  ;
+    /**
+     * Returns true if the address of this token sorts before the address of the other token
+     * @param other other token to compare
+     * @throws if the tokens have the same address
+     * @throws if the tokens are on different chains
+     */
+    ;
 
   _proto.sortsBefore = function sortsBefore(other) {
     !(this.chainId === other.chainId) ? process.env.NODE_ENV !== "production" ? invariant(false, 'CHAIN_IDS') : invariant(false) : void 0;
@@ -2165,8 +2165,8 @@ var Price = /*#__PURE__*/function (_Fraction) {
 
     for (var _iterator = _createForOfIteratorHelperLoose(route.pools.entries()), _step; !(_step = _iterator()).done;) {
       var _step$value = _step.value,
-          i = _step$value[0],
-          pool = _step$value[1];
+        i = _step$value[0],
+        pool = _step$value[1];
       prices.push(pool.priceOf(route.path[i], route.path[i + 1]));
     }
 
@@ -2188,7 +2188,7 @@ var Price = /*#__PURE__*/function (_Fraction) {
 
     return new Price(this.baseCurrency, other.quoteCurrency, fraction.denominator, fraction.numerator);
   } // performs floor division on overflow
-  ;
+    ;
 
   _proto.quote = function quote(currencyAmount, chainId) {
     if (chainId === void 0) {
@@ -2264,8 +2264,8 @@ var Route = /*#__PURE__*/function () {
 
     for (var _iterator = _createForOfIteratorHelperLoose(pools.entries()), _step; !(_step = _iterator()).done;) {
       var _step$value = _step.value,
-          i = _step$value[0],
-          pool = _step$value[1];
+        i = _step$value[0],
+        pool = _step$value[1];
       var inputToken = path[i];
       !pool.involvesToken(inputToken) ? process.env.NODE_ENV !== "production" ? invariant(false, 'PATH') : invariant(false) : void 0;
       var outputToken = void 0;
@@ -2402,7 +2402,7 @@ function wrappedAmount(currencyAmount, chainId) {
 
   if (currencyAmount instanceof TokenAmount) return currencyAmount;
   if (currencyAmount.currency === CAVAX[chainId]) return new TokenAmount(WAVAX[chainId], currencyAmount.raw);
-   process.env.NODE_ENV !== "production" ? invariant(false, 'CURRENCY') : invariant(false) ;
+  process.env.NODE_ENV !== "production" ? invariant(false, 'CURRENCY') : invariant(false);
 }
 
 function wrappedCurrency(currency, chainId) {
@@ -2412,7 +2412,7 @@ function wrappedCurrency(currency, chainId) {
 
   if (currency instanceof Token) return currency;
   if (currency === CAVAX[chainId]) return WAVAX[chainId];
-   process.env.NODE_ENV !== "production" ? invariant(false, 'CURRENCY') : invariant(false) ;
+  process.env.NODE_ENV !== "production" ? invariant(false, 'CURRENCY') : invariant(false);
 }
 /**
  * Represents a trade executed against a list of pools.
@@ -2430,8 +2430,8 @@ var Trade = /*#__PURE__*/function () {
       fee: ZERO_PERCENT,
       feeTo: ZERO_ADDRESS
     } : _temp,
-        fee = _ref.fee,
-        feeTo = _ref.feeTo;
+      fee = _ref.fee,
+      feeTo = _ref.feeTo;
 
     this.chainId = ChainId.AVALANCHE;
     this.fee = new Percent(ZERO);
@@ -2448,8 +2448,8 @@ var Trade = /*#__PURE__*/function () {
         var pool = route.pools[i];
 
         var _pool$getOutputAmount = pool.getOutputAmount(amounts[i], route.path[i + 1]),
-            outputAmount = _pool$getOutputAmount[0],
-            nextPool = _pool$getOutputAmount[1];
+          outputAmount = _pool$getOutputAmount[0],
+          nextPool = _pool$getOutputAmount[1];
 
         amounts[i + 1] = outputAmount;
         nextPools[i] = nextPool;
@@ -2471,8 +2471,8 @@ var Trade = /*#__PURE__*/function () {
         var _pool = route.pools[_i - 1];
 
         var _pool$getInputAmount = _pool.getInputAmount(amounts[_i], route.path[_i - 1]),
-            inputAmount = _pool$getInputAmount[0],
-            _nextPool = _pool$getInputAmount[1];
+          inputAmount = _pool$getInputAmount[0],
+          _nextPool = _pool$getInputAmount[1];
 
         amounts[_i - 1] = inputAmount;
         nextPools[_i - 1] = _nextPool;
@@ -2508,14 +2508,14 @@ var Trade = /*#__PURE__*/function () {
 
     return new Trade(route, amountIn, TradeType.EXACT_INPUT, chainId, daasOptions);
   }
-  /**
-   * Constructs an exact out trade with the given amount out and route
-   * @param route route of the exact out trade
-   * @param amountOut the amount returned by the trade
-   * @param chainId chain id
-   * @param daasOptions fee information possibly imposed via DEX as a service
-   */
-  ;
+    /**
+     * Constructs an exact out trade with the given amount out and route
+     * @param route route of the exact out trade
+     * @param amountOut the amount returned by the trade
+     * @param chainId chain id
+     * @param daasOptions fee information possibly imposed via DEX as a service
+     */
+    ;
 
   Trade.exactOut = function exactOut(route, amountOut, chainId, daasOptions) {
     if (chainId === void 0) {
@@ -2524,11 +2524,11 @@ var Trade = /*#__PURE__*/function () {
 
     return new Trade(route, amountOut, TradeType.EXACT_OUTPUT, chainId, daasOptions);
   }
-  /**
-   * Get the minimum amount that must be received from this trade for the given slippage tolerance
-   * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
-   */
-  ;
+    /**
+     * Get the minimum amount that must be received from this trade for the given slippage tolerance
+     * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
+     */
+    ;
 
   var _proto = Trade.prototype;
 
@@ -2542,11 +2542,11 @@ var Trade = /*#__PURE__*/function () {
       return this.outputAmount instanceof TokenAmount ? new TokenAmount(this.outputAmount.token, slippageAdjustedAmountOut) : CurrencyAmount.ether(slippageAdjustedAmountOut, this.chainId);
     }
   }
-  /**
-   * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
-   * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
-   */
-  ;
+    /**
+     * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
+     * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
+     */
+    ;
 
   _proto.maximumAmountIn = function maximumAmountIn(slippageTolerance) {
     !!slippageTolerance.lessThan(ZERO) ? process.env.NODE_ENV !== "production" ? invariant(false, 'SLIPPAGE_TOLERANCE') : invariant(false) : void 0;
@@ -2558,39 +2558,39 @@ var Trade = /*#__PURE__*/function () {
       return this.inputAmount instanceof TokenAmount ? new TokenAmount(this.inputAmount.token, slippageAdjustedAmountIn) : CurrencyAmount.ether(slippageAdjustedAmountIn, this.chainId);
     }
   }
-  /**
-   * Given a list of pools, and a fixed amount in, returns the top `maxNumResults` trades that go from an input token
-   * amount to an output token, making at most `maxHops` hops.
-   * Note this does not consider aggregation, as routes are linear. It's possible a better route exists by splitting
-   * the amount in among multiple routes.
-   * @param pools the pools to consider in finding the best trade
-   * @param currencyAmountIn exact amount of input currency to spend
-   * @param currencyOut the desired currency out
-   * @param maxNumResults maximum number of results to return
-   * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
-   * @param fee total fee possibly imposed via DEX as a service
-   * @param feeTo possible DEX as a service partner
-   * @param currentPools used in recursion; the current list of pools
-   * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
-   * @param originalAmountIn used in recursion; the original value of the currencyAmountIn parameter
-   * @param bestTrades used in recursion; the current list of best trades
-   */
-  ;
+    /**
+     * Given a list of pools, and a fixed amount in, returns the top `maxNumResults` trades that go from an input token
+     * amount to an output token, making at most `maxHops` hops.
+     * Note this does not consider aggregation, as routes are linear. It's possible a better route exists by splitting
+     * the amount in among multiple routes.
+     * @param pools the pools to consider in finding the best trade
+     * @param currencyAmountIn exact amount of input currency to spend
+     * @param currencyOut the desired currency out
+     * @param maxNumResults maximum number of results to return
+     * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
+     * @param fee total fee possibly imposed via DEX as a service
+     * @param feeTo possible DEX as a service partner
+     * @param currentPools used in recursion; the current list of pools
+     * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
+     * @param originalAmountIn used in recursion; the original value of the currencyAmountIn parameter
+     * @param bestTrades used in recursion; the current list of best trades
+     */
+    ;
 
   Trade.bestTradeExactIn = function bestTradeExactIn(pools, currencyAmountIn, currencyOut, _temp2, _temp3, // used in recursion.
-  currentPools, currentHops, originalAmountIn, bestTrades) {
+    currentPools, currentHops, originalAmountIn, bestTrades) {
     var _ref2 = _temp2 === void 0 ? {} : _temp2,
-        _ref2$maxNumResults = _ref2.maxNumResults,
-        maxNumResults = _ref2$maxNumResults === void 0 ? 3 : _ref2$maxNumResults,
-        _ref2$maxHops = _ref2.maxHops,
-        maxHops = _ref2$maxHops === void 0 ? 3 : _ref2$maxHops;
+      _ref2$maxNumResults = _ref2.maxNumResults,
+      maxNumResults = _ref2$maxNumResults === void 0 ? 3 : _ref2$maxNumResults,
+      _ref2$maxHops = _ref2.maxHops,
+      maxHops = _ref2$maxHops === void 0 ? 3 : _ref2$maxHops;
 
     var _ref3 = _temp3 === void 0 ? {
       fee: ZERO_PERCENT,
       feeTo: ZERO_ADDRESS
     } : _temp3,
-        fee = _ref3.fee,
-        feeTo = _ref3.feeTo;
+      fee = _ref3.fee,
+      feeTo = _ref3.feeTo;
 
     if (currentPools === void 0) {
       currentPools = [];
@@ -2674,40 +2674,40 @@ var Trade = /*#__PURE__*/function () {
 
     return bestTrades;
   }
-  /**
-   * similar to the above method but instead targets a fixed output amount
-   * given a list of pools, and a fixed amount out, returns the top `maxNumResults` trades that go from an input token
-   * to an output token amount, making at most `maxHops` hops
-   * note this does not consider aggregation, as routes are linear. it's possible a better route exists by splitting
-   * the amount in among multiple routes.
-   * @param pools the pools to consider in finding the best trade
-   * @param currencyIn the currency to spend
-   * @param currencyAmountOut the exact amount of currency out
-   * @param maxNumResults maximum number of results to return
-   * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
-   * @param fee total fee possibly imposed via DEX as a service
-   * @param feeTo possible DEX as a service partner
-   * @param currentPools used in recursion; the current list of pools
-   * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
-   * @param originalAmountOut used in recursion; the original value of the currencyAmountOut parameter
-   * @param bestTrades used in recursion; the current list of best trades
-   */
-  ;
+    /**
+     * similar to the above method but instead targets a fixed output amount
+     * given a list of pools, and a fixed amount out, returns the top `maxNumResults` trades that go from an input token
+     * to an output token amount, making at most `maxHops` hops
+     * note this does not consider aggregation, as routes are linear. it's possible a better route exists by splitting
+     * the amount in among multiple routes.
+     * @param pools the pools to consider in finding the best trade
+     * @param currencyIn the currency to spend
+     * @param currencyAmountOut the exact amount of currency out
+     * @param maxNumResults maximum number of results to return
+     * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
+     * @param fee total fee possibly imposed via DEX as a service
+     * @param feeTo possible DEX as a service partner
+     * @param currentPools used in recursion; the current list of pools
+     * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
+     * @param originalAmountOut used in recursion; the original value of the currencyAmountOut parameter
+     * @param bestTrades used in recursion; the current list of best trades
+     */
+    ;
 
   Trade.bestTradeExactOut = function bestTradeExactOut(pools, currencyIn, currencyAmountOut, _temp4, _temp5, // used in recursion.
-  currentPools, currentHops, originalAmountOut, bestTrades) {
+    currentPools, currentHops, originalAmountOut, bestTrades) {
     var _ref4 = _temp4 === void 0 ? {} : _temp4,
-        _ref4$maxNumResults = _ref4.maxNumResults,
-        maxNumResults = _ref4$maxNumResults === void 0 ? 3 : _ref4$maxNumResults,
-        _ref4$maxHops = _ref4.maxHops,
-        maxHops = _ref4$maxHops === void 0 ? 3 : _ref4$maxHops;
+      _ref4$maxNumResults = _ref4.maxNumResults,
+      maxNumResults = _ref4$maxNumResults === void 0 ? 3 : _ref4$maxNumResults,
+      _ref4$maxHops = _ref4.maxHops,
+      maxHops = _ref4$maxHops === void 0 ? 3 : _ref4$maxHops;
 
     var _ref5 = _temp5 === void 0 ? {
       fee: ZERO_PERCENT,
       feeTo: ZERO_ADDRESS
     } : _temp5,
-        fee = _ref5.fee,
-        feeTo = _ref5.feeTo;
+      fee = _ref5.fee,
+      feeTo = _ref5.feeTo;
 
     if (currentPools === void 0) {
       currentPools = [];
@@ -2831,7 +2831,7 @@ var Pool = /*#__PURE__*/function () {
       return tokenAmount.token.equals(token);
     });
   } // Reserves
-  ;
+    ;
 
   _proto.reserveOfIndex = function reserveOfIndex(index) {
     return this.tokenAmounts[index];
@@ -2842,7 +2842,7 @@ var Pool = /*#__PURE__*/function () {
     !(index >= 0) ? process.env.NODE_ENV !== "production" ? invariant(false, 'TOKEN_MISSING') : invariant(false) : void 0;
     return this.tokenAmounts[index];
   } // Prices
-  ;
+    ;
 
   _proto.priceOf = function priceOf(baseToken, quoteToken) {
     return new Price(baseToken, quoteToken, this.reserveOfToken(baseToken).raw, this.reserveOfToken(quoteToken).raw);
@@ -2894,7 +2894,7 @@ var Pair = /*#__PURE__*/function (_Pool) {
     }
 
     var tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
-    ? [tokenAmountA, tokenAmountB] : [tokenAmountB, tokenAmountA];
+      ? [tokenAmountA, tokenAmountB] : [tokenAmountB, tokenAmountA];
     var decimals;
 
     if ([ChainId.NEAR_TESTNET, ChainId.NEAR_MAINNET].includes(chainId)) {
@@ -2949,7 +2949,7 @@ var Pair = /*#__PURE__*/function (_Pool) {
     !totalSupply.token.equals(this.liquidityToken) ? process.env.NODE_ENV !== "production" ? invariant(false, 'LIQUIDITY') : invariant(false) : void 0;
     !(depositTokenAmounts.length === 2) ? process.env.NODE_ENV !== "production" ? invariant(false, 'LIQUIDITY_TOKENS') : invariant(false) : void 0;
     var tokenAmounts = depositTokenAmounts[0].token.sortsBefore(depositTokenAmounts[1].token) // does safety checks
-    ? [depositTokenAmounts[0], depositTokenAmounts[1]] : [depositTokenAmounts[1], depositTokenAmounts[0]];
+      ? [depositTokenAmounts[0], depositTokenAmounts[1]] : [depositTokenAmounts[1], depositTokenAmounts[0]];
     !(tokenAmounts[0].token.equals(this.token0) && tokenAmounts[1].token.equals(this.token1)) ? process.env.NODE_ENV !== "production" ? invariant(false, 'TOKEN') : invariant(false) : void 0;
     var liquidity;
 
@@ -3115,11 +3115,11 @@ var Vault = /*#__PURE__*/function (_Pool) {
       return JSBI.multiply(c_amount, _factor2);
     }
   }
-  /**
-   * Returns the swap fee coefficient (x / DIVISOR) for swaps utilizing the vault.
-   * Where (1 - (x/DIVISOR)) of each swap belongs to the LPs
-   */
-  ;
+    /**
+     * Returns the swap fee coefficient (x / DIVISOR) for swaps utilizing the vault.
+     * Where (1 - (x/DIVISOR)) of each swap belongs to the LPs
+     */
+    ;
 
   var _proto = Vault.prototype;
 
@@ -3153,7 +3153,7 @@ var Vault = /*#__PURE__*/function (_Pool) {
   _proto.getInputAmount = function getInputAmount(_outputToken, _inputToken) {
     throw new MethodNotSupported();
   } // Depositing X tokens for ? liquidity shares
-  ;
+    ;
 
   _proto.getLiquidityMinted = function getLiquidityMinted(totalSupply, depositTokenAmounts) {
     !totalSupply.token.equals(this.liquidityToken) ? process.env.NODE_ENV !== "production" ? invariant(false, 'LIQUIDITY') : invariant(false) : void 0;
@@ -3202,7 +3202,7 @@ var Vault = /*#__PURE__*/function (_Pool) {
     var mint_shares = JSBI.divide(JSBI.multiply(totalSupply.raw, JSBI.subtract(d_2, d_0)), d_0);
     return new TokenAmount(this.liquidityToken, mint_shares);
   } // Redeeming X liquidity shares for ? (all) tokens
-  ;
+    ;
 
   _proto.getLiquidityValues = function getLiquidityValues(totalSupply, shares) {
     !totalSupply.token.equals(this.liquidityToken) ? process.env.NODE_ENV !== "production" ? invariant(false, 'TOTAL_SUPPLY') : invariant(false) : void 0;
@@ -3221,7 +3221,7 @@ var Vault = /*#__PURE__*/function (_Pool) {
 
     return liquidityTokenValues;
   } // Withdrawing X tokens in exchange for ? liquidity shares
-  ;
+    ;
 
   _proto.getLiquidityValuesByTokens = function getLiquidityValuesByTokens(totalSupply, withdrawTokenAmounts) {
     !totalSupply.token.equals(this.liquidityToken) ? process.env.NODE_ENV !== "production" ? invariant(false, 'LIQUIDITY') : invariant(false) : void 0;
@@ -3380,7 +3380,7 @@ var Router = /*#__PURE__*/function () {
   /**
    * Cannot be constructed.
    */
-  function Router() {}
+  function Router() { }
   /**
    * Produces the on-chain method name to call and the hex encoded parameters to pass as arguments for a given trade.
    * @param trade to produce call parameters for
@@ -3458,40 +3458,40 @@ var Router = /*#__PURE__*/function () {
 }();
 
 var ERC20 = [
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "decimals",
-		outputs: [
-			{
-				name: "",
-				type: "uint8"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "",
-				type: "address"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
+  {
+    constant: true,
+    inputs: [
+    ],
+    name: "decimals",
+    outputs: [
+      {
+        name: "",
+        type: "uint8"
+      }
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "balanceOf",
+    outputs: [
+      {
+        name: "",
+        type: "uint256"
+      }
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  }
 ];
 
 var TOKEN_DECIMALS_CACHE = {};
@@ -3503,7 +3503,7 @@ var Fetcher = /*#__PURE__*/function () {
   /**
    * Cannot be constructed.
    */
-  function Fetcher() {}
+  function Fetcher() { }
   /**
    * Fetch information for a given token on the given chain, using the given ethers provider.
    * @param chainId chain of the token
@@ -3537,13 +3537,13 @@ var Fetcher = /*#__PURE__*/function () {
       return Promise.reject(e);
     }
   }
-  /**
-   * Fetches information about a pair and constructs a pair from the given two tokens.
-   * @param tokenA first token
-   * @param tokenB second token
-   * @param provider the provider to use to fetch the data
-   */
-  ;
+    /**
+     * Fetches information about a pair and constructs a pair from the given two tokens.
+     * @param tokenA first token
+     * @param tokenB second token
+     * @param provider the provider to use to fetch the data
+     */
+    ;
 
   Fetcher.fetchPairData = function fetchPairData(tokenA, tokenB, provider) {
     try {
@@ -3552,7 +3552,7 @@ var Fetcher = /*#__PURE__*/function () {
       var address = Pair.getAddress(tokenA, tokenB, tokenA.chainId);
       return Promise.resolve(new Contract(address, IPangolinPair.abi, provider).getReserves()).then(function (_ref) {
         var reserves0 = _ref[0],
-            reserves1 = _ref[1];
+          reserves1 = _ref[1];
         var balances = tokenA.sortsBefore(tokenB) ? [reserves0, reserves1] : [reserves1, reserves0];
         return new Pair(new TokenAmount(tokenA, balances[0]), new TokenAmount(tokenB, balances[1]), tokenA.chainId);
       });

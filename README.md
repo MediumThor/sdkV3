@@ -1,5 +1,5 @@
-# Pangolin SDK
-This repo contains tools for developing with [Pangolin](pangolin.exchange).
+# MediumThorDEX SDK
+This repo contains tools for developing with [myDEX](pangolin.exchange).
 
 ## Running
 This project uses standard npm and yarn workflows.
