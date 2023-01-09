@@ -219,31 +219,37 @@ var AVALANCHE_FUJI = {
   supported_by_gelato: false,
   rpc_uri: 'https://api.avax-test.network/ext/bc/C/rpc',
   contracts: {
-    png: '0xBBfeDb04Cc7d030d29Cc34dd0081f062C4C78818',
-    factory: '0xd17c8AD27f7B3c163BD88008f04cfAd75f0Af228',
-    router: '0x2B6B2abAA42c82611D7dBc8Faa5C82cC08Edd960',
+    png: '0x805B395F0605BA697F7279BAE0853708f0aDbB5d',
+    factory: '0x8a8Fa5Cf83f63c742012614e90d7EBF8F7864eC8',
+    router: '0xA600f3A63C42dE9F230F7519cBf44238e9E18980',
     router_daas: '0xFE97f59B72eEE0F29F93e12195C6F35DCdAB6899',
     wrapped_native_token: '0xd00ae08403B9bbb9124bB305C09058E32C39A48c',
-    timelock: "0xD04b1D16ca27B26e6333705FBF31aAbE21DBd431",
+    timelock: "0x546AFC280433191B84e83a51BC88619f2b0B7b6b",
     mini_chef: {
-      address: '0x0bD3dde1Ac6AD1136a91a5A0fe7ac25B618D5bD3',
+      address: '0x3A1a66cD9156Fa3dF0a58F35D72642d49366E5b2',
       active: true,
       type: ChefType.MINI_CHEF_V2
     },
-    community_treasury: '0x48F9686E1946EB4B41C56219974956e13368c3F1',
+    community_treasury: '0xB197E3bd9Ce3921BC2B1844358a6014012479aE4',
     airdrop: {
-      address: '0x6BdF0D0Fe9161Bef8afc7948C72b3FC82728B06e',
+      address: '0x296EC1B71d82F2eE7131189817DB9C33831063AB',
       active: false,
       type: AirdropType.LEGACY
     },
-    treasury_vester: "0x016161B46fE40BC9aB04759491Eed2468dD88E1c",
-    revenue_distributor: "0x9f4bbFF2792C3d5BEEf445392018B7e42068b48b",
-    fee_collector: "0xa52Fb206df12Ca7E9cd09Ac9B2Af2327242e8A08",
+    treasury_vester: "0x3450D84c4D6013a8E88b573F4b79f22C78bb1C90",
+    revenue_distributor: "0xED8FdE48308F3c0fB887151792FC5aab1cb77e58",
+    fee_collector: "0xb20f804E13D373d9054dB3C2CaA22b56AF14B42A",
     multicall: '0xb465Fd2d9C71d5D6e6c069aaC9b4E21c69aAA78f',
     staking: [{
-      address: "0x1C448add41b92E2201a51FB18d06556041e51795",
+      address: "0x41977e0dCF395dfb5Ad9d40B984239814C9431D4",
       active: true,
-      reward_token: "0xBBfeDb04Cc7d030d29Cc34dd0081f062C4C78818",
+      reward_token: "0x805B395F0605BA697F7279BAE0853708f0aDbB5d",
+      type: StakingType.LEGACY
+    },
+    {
+      address: "0x881DcfbF7859E84265FA9489Dda5Cb889CEe1efa",
+      active: true,
+      reward_token: "0x805B395F0605BA697F7279BAE0853708f0aDbB5d",
       type: StakingType.LEGACY
     }]
   },
