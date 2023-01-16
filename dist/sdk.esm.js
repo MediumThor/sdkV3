@@ -219,37 +219,31 @@ var AVALANCHE_FUJI = {
   supported_by_gelato: false,
   rpc_uri: 'https://api.avax-test.network/ext/bc/C/rpc',
   contracts: {
-    png: '0x805B395F0605BA697F7279BAE0853708f0aDbB5d',
-    factory: '0x8a8Fa5Cf83f63c742012614e90d7EBF8F7864eC8',
-    router: '0xA600f3A63C42dE9F230F7519cBf44238e9E18980',
+    png: '0xdc8634c0F808F1177aF104505982967f25d7A60A',
+    factory: '0x7C33896A3EC07571590b8632b18398097B2690f7',
+    router: '0x009fFb093009Ee81dA08919472b95dbECC577fD2',
     router_daas: '0xFE97f59B72eEE0F29F93e12195C6F35DCdAB6899',
     wrapped_native_token: '0xd00ae08403B9bbb9124bB305C09058E32C39A48c',
-    timelock: "0x546AFC280433191B84e83a51BC88619f2b0B7b6b",
+    timelock: "0x6F5115b5D5f9d9d5d3690f0C0e12e81500fe9d7F",
     mini_chef: {
-      address: '0x3A1a66cD9156Fa3dF0a58F35D72642d49366E5b2',
+      address: '0x34145D069d44005e9956A587af09126A06fC0A7e',
       active: true,
       type: ChefType.MINI_CHEF_V2
     },
-    community_treasury: '0xB197E3bd9Ce3921BC2B1844358a6014012479aE4',
+    community_treasury: '0xfb77f5aE215fB9A341836EC3c4d1BbbD250d9F58',
     airdrop: {
-      address: '0x296EC1B71d82F2eE7131189817DB9C33831063AB',
-      active: false,
+      address: '0xEd5aEA66649f37f751959e6F95D73c9Da2cf6F53',
+      active: true,
       type: AirdropType.LEGACY
     },
-    treasury_vester: "0x3450D84c4D6013a8E88b573F4b79f22C78bb1C90",
-    revenue_distributor: "0xED8FdE48308F3c0fB887151792FC5aab1cb77e58",
-    fee_collector: "0xb20f804E13D373d9054dB3C2CaA22b56AF14B42A",
+    treasury_vester: "0xd0f2E7d469a31660a6C773a5735DDEf0B115aE18",
+    revenue_distributor: "0x31EF54f40027FA216a57fdA5Bf29712636842D97",
+    fee_collector: "0x581CcFE441FeF6C784F5b9F0a8F61bA616097dfD",
     multicall: '0xb465Fd2d9C71d5D6e6c069aaC9b4E21c69aAA78f',
     staking: [{
-      address: "0x41977e0dCF395dfb5Ad9d40B984239814C9431D4",
+      address: "0x92f53B0ba9013b444b7a68210C0cfd1e30e21C93",
       active: true,
-      reward_token: "0x805B395F0605BA697F7279BAE0853708f0aDbB5d",
-      type: StakingType.LEGACY
-    },
-    {
-      address: "0x881DcfbF7859E84265FA9489Dda5Cb889CEe1efa",
-      active: true,
-      reward_token: "0x805B395F0605BA697F7279BAE0853708f0aDbB5d",
+      reward_token: "0xdc8634c0F808F1177aF104505982967f25d7A60A",
       type: StakingType.LEGACY
     }]
   },
