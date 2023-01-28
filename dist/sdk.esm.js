@@ -210,7 +210,7 @@ var AVALANCHE_FUJI = {
   chain_id: 43113,
   name: 'Avalanche Fuji',
   symbol: 'AVAX',
-  png_symbol: 'dPNG',
+  png_symbol: 'Arc',
   mainnet: false,
   evm: true,
   logo: 'https://raw.githubusercontent.com/pangolindex/sdk/master/src/images/chains/avax.png',
@@ -219,14 +219,14 @@ var AVALANCHE_FUJI = {
   supported_by_gelato: false,
   rpc_uri: 'https://api.avax-test.network/ext/bc/C/rpc',
   contracts: {
-    png: '0xdc8634c0F808F1177aF104505982967f25d7A60A',
-    factory: '0x7C33896A3EC07571590b8632b18398097B2690f7',
-    router: '0x009fFb093009Ee81dA08919472b95dbECC577fD2',
+    png: '0x85C9192a1088ce572D50E62F6e662Bcd345184C9',
+    factory: '0x538af53faE7895D1c74c10C4Cc52b72F980e1da9',
+    router: '0x458b63e266161f4a986Db215C479acf9740e346A',
     router_daas: '0xFE97f59B72eEE0F29F93e12195C6F35DCdAB6899',
     wrapped_native_token: '0xd00ae08403B9bbb9124bB305C09058E32C39A48c',
     timelock: "0x6F5115b5D5f9d9d5d3690f0C0e12e81500fe9d7F",
     mini_chef: {
-      address: '0x34145D069d44005e9956A587af09126A06fC0A7e',
+      address: '0x4b757aE26cBB877f619003398Ecc438d57A9D49E',
       active: true,
       type: ChefType.MINI_CHEF_V2
     },
@@ -1473,7 +1473,7 @@ var Rounding;
 })(Rounding || (Rounding = {}));
 
 var FACTORY_ADDRESS = (_FACTORY_ADDRESS = {}, _FACTORY_ADDRESS[ChainId.FUJI] = CHAINS[ChainId.FUJI].contracts.factory, _FACTORY_ADDRESS[ChainId.AVALANCHE] = CHAINS[ChainId.AVALANCHE].contracts.factory, _FACTORY_ADDRESS[ChainId.WAGMI] = CHAINS[ChainId.WAGMI].contracts.factory, _FACTORY_ADDRESS[ChainId.COSTON] = CHAINS[ChainId.COSTON].contracts.factory, _FACTORY_ADDRESS[ChainId.SONGBIRD] = CHAINS[ChainId.SONGBIRD].contracts.factory, _FACTORY_ADDRESS[ChainId.NEAR_MAINNET] = CHAINS[ChainId.NEAR_MAINNET].contracts.factory, _FACTORY_ADDRESS[ChainId.NEAR_TESTNET] = CHAINS[ChainId.NEAR_TESTNET].contracts.factory, _FACTORY_ADDRESS);
-var INIT_CODE_HASH = '0x40231f6b438bce0797c9ada29b718a87ea0a5cea3fe9a771abdd76bd41a3e545';
+var INIT_CODE_HASH = '0xfe5b89cf5f63248b324307b1d26a24bf080ea3af49f8bccbbf9575072b332009';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
@@ -2903,7 +2903,7 @@ var Pair = /*#__PURE__*/function (_Pool) {
       decimals = 18;
     }
 
-    var liquidityToken = new Token(chainId, Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token, chainId), decimals, 'PGL', 'Pangolin Liquidity');
+    var liquidityToken = new Token(chainId, Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token, chainId), decimals, 'ARL', 'Arcanum Liquidity');
     return _Pool.call(this, chainId, liquidityToken, tokenAmounts) || this;
   }
 
@@ -3078,7 +3078,7 @@ var Vault = /*#__PURE__*/function (_Pool) {
     }) ? process.env.NODE_ENV !== "production" ? invariant(false, 'DECIMAL_ILLEGAL') : invariant(false) : void 0;
     var liquidityToken = new Token(chainId, Vault.getAddress(tokenAmounts.map(function (tokenAmount) {
       return tokenAmount.token;
-    })), 18, 'PGL', 'Pangolin Liquidity');
+    })), 18, 'ARL', 'Arcanum Liquidity');
     _this = _Pool.call(this, chainId, liquidityToken, tokenAmounts) || this;
     _this.amp = amp;
     return _this;
