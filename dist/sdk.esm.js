@@ -210,7 +210,7 @@ var AVALANCHE_FUJI = {
   chain_id: 43113,
   name: 'Avalanche Fuji',
   symbol: 'AVAX',
-  png_symbol: 'Arc',
+  png_symbol: 'ARC',
   mainnet: false,
   evm: true,
   logo: 'https://raw.githubusercontent.com/pangolindex/sdk/master/src/images/chains/avax.png',
@@ -230,20 +230,20 @@ var AVALANCHE_FUJI = {
       active: true,
       type: ChefType.MINI_CHEF_V2
     },
-    community_treasury: '0xfb77f5aE215fB9A341836EC3c4d1BbbD250d9F58',
+    community_treasury: '0x44584Cb9AB64ebBE29A1d8f71e973A89e35E75E3',
     airdrop: {
-      address: '0xEd5aEA66649f37f751959e6F95D73c9Da2cf6F53',
+      address: '0x473442C4d8708F8f5e9a31612098C5b5Bed6D71D',
       active: true,
       type: AirdropType.LEGACY
     },
-    treasury_vester: "0xd0f2E7d469a31660a6C773a5735DDEf0B115aE18",
-    revenue_distributor: "0x31EF54f40027FA216a57fdA5Bf29712636842D97",
-    fee_collector: "0x581CcFE441FeF6C784F5b9F0a8F61bA616097dfD",
+    treasury_vester: "0xD3935c7FbE0A1Aa21CFc2d2D2051B564A5Faa31f",
+    revenue_distributor: "0x5d22eD2D5c11fd5A85d7C2Ae92EE011063b918E8",
+    fee_collector: "0xe73fa0A2653d1118EbFD095De4c8776A54944732",
     multicall: '0xb465Fd2d9C71d5D6e6c069aaC9b4E21c69aAA78f',
     staking: [{
       address: "0x92f53B0ba9013b444b7a68210C0cfd1e30e21C93",
       active: true,
-      reward_token: "0xdc8634c0F808F1177aF104505982967f25d7A60A",
+      reward_token: "0x85C9192a1088ce572D50E62F6e662Bcd345184C9",
       type: StakingType.LEGACY
     }]
   },

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+function _interopDefault(ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var JSBI = _interopDefault(require('jsbi'));
 var invariant = _interopDefault(require('tiny-invariant'));
@@ -1552,7 +1552,7 @@ function _isNativeReflectConstruct() {
   if (typeof Proxy === "function") return true;
 
   try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () { }));
     return true;
   } catch (e) {
     return false;
@@ -1727,8 +1727,8 @@ var MethodNotSupported = /*#__PURE__*/function (_Error3) {
 }( /*#__PURE__*/_wrapNativeSuper(Error));
 
 function validateSolidityTypeInstance(value, solidityType) {
-  !JSBI.greaterThanOrEqual(value, ZERO) ?  invariant(false, value + " is not a " + solidityType + ".")  : void 0;
-  !JSBI.lessThanOrEqual(value, SOLIDITY_TYPE_MAXIMA[solidityType]) ?  invariant(false, value + " is not a " + solidityType + ".")  : void 0;
+  !JSBI.greaterThanOrEqual(value, ZERO) ? invariant(false, value + " is not a " + solidityType + ".") : void 0;
+  !JSBI.lessThanOrEqual(value, SOLIDITY_TYPE_MAXIMA[solidityType]) ? invariant(false, value + " is not a " + solidityType + ".") : void 0;
 } // warns if addresses are not checksummed
 
 function validateAndParseAddress(address$1) {
@@ -1737,7 +1737,7 @@ function validateAndParseAddress(address$1) {
     "development" !== "production" ? warning(address$1 === checksummedAddress, address$1 + " is not checksummed.") : void 0;
     return checksummedAddress;
   } catch (error) {
-      invariant(false, address$1 + " is not a valid address.")  ;
+    invariant(false, address$1 + " is not a valid address.");
   }
 }
 function parseBigintIsh(bigintIsh) {
@@ -1764,14 +1764,14 @@ function sqrt(y) {
   return z;
 }
 function abs(x) {
-  if (JSBI.lessThan(x, ZERO)) return JSBI.multiply(x, JSBI.BigInt(-1));else return x;
+  if (JSBI.lessThan(x, ZERO)) return JSBI.multiply(x, JSBI.BigInt(-1)); else return x;
 } // given an array of items sorted by `comparator`, insert an item into its sort index and constrain the size to
 // `maxSize` by removing the last item
 
 function sortedInsert(items, add, maxSize, comparator) {
-  !(maxSize > 0) ?  invariant(false, 'MAX_SIZE_ZERO')  : void 0; // this is an invariant because the interface cannot return multiple removed items if items.length exceeds maxSize
+  !(maxSize > 0) ? invariant(false, 'MAX_SIZE_ZERO') : void 0; // this is an invariant because the interface cannot return multiple removed items if items.length exceeds maxSize
 
-  !(items.length <= maxSize) ?  invariant(false, 'ITEMS_SIZE')  : void 0; // short circuit first item add
+  !(items.length <= maxSize) ? invariant(false, 'ITEMS_SIZE') : void 0; // short circuit first item add
 
   if (items.length === 0) {
     items.push(add);
@@ -1784,7 +1784,7 @@ function sortedInsert(items, add, maxSize, comparator) {
     }
 
     var lo = 0,
-        hi = items.length;
+      hi = items.length;
 
     while (lo < hi) {
       var mid = lo + hi >>> 1;
@@ -1809,18 +1809,18 @@ var _Currency$CURRENCY;
  */
 
 var Currency =
-/**
- * Constructs an instance of the base class `Currency`. The only instance of the base class `Currency` is `Currency.ETHER`.
- * @param decimals decimals of the currency
- * @param symbol symbol of the currency
- * @param name of the currency
- */
-function Currency(decimals, symbol, name) {
-  validateSolidityTypeInstance(JSBI.BigInt(decimals), SolidityType.uint8);
-  this.decimals = decimals;
-  this.symbol = symbol;
-  this.name = name;
-};
+  /**
+   * Constructs an instance of the base class `Currency`. The only instance of the base class `Currency` is `Currency.ETHER`.
+   * @param decimals decimals of the currency
+   * @param symbol symbol of the currency
+   * @param name of the currency
+   */
+  function Currency(decimals, symbol, name) {
+    validateSolidityTypeInstance(JSBI.BigInt(decimals), SolidityType.uint8);
+    this.decimals = decimals;
+    this.symbol = symbol;
+    this.name = name;
+  };
 /**
  * The only instance of the base class `Currency`.
  */
@@ -1871,17 +1871,17 @@ var Token = /*#__PURE__*/function (_Currency) {
 
     return this.chainId === other.chainId && this.address === other.address;
   }
-  /**
-   * Returns true if the address of this token sorts before the address of the other token
-   * @param other other token to compare
-   * @throws if the tokens have the same address
-   * @throws if the tokens are on different chains
-   */
-  ;
+    /**
+     * Returns true if the address of this token sorts before the address of the other token
+     * @param other other token to compare
+     * @throws if the tokens have the same address
+     * @throws if the tokens are on different chains
+     */
+    ;
 
   _proto.sortsBefore = function sortsBefore(other) {
-    !(this.chainId === other.chainId) ?  invariant(false, 'CHAIN_IDS')  : void 0;
-    !(this.address !== other.address) ?  invariant(false, 'ADDRESSES')  : void 0;
+    !(this.chainId === other.chainId) ? invariant(false, 'CHAIN_IDS') : void 0;
+    !(this.address !== other.address) ? invariant(false, 'ADDRESSES') : void 0;
     return this.address.toLowerCase() < other.address.toLowerCase();
   };
 
@@ -1982,8 +1982,8 @@ var Fraction = /*#__PURE__*/function () {
       rounding = exports.Rounding.ROUND_HALF_UP;
     }
 
-    !Number.isInteger(significantDigits) ?  invariant(false, significantDigits + " is not an integer.")  : void 0;
-    !(significantDigits > 0) ?  invariant(false, significantDigits + " is not positive.")  : void 0;
+    !Number.isInteger(significantDigits) ? invariant(false, significantDigits + " is not an integer.") : void 0;
+    !(significantDigits > 0) ? invariant(false, significantDigits + " is not positive.") : void 0;
     Decimal.set({
       precision: significantDigits + 1,
       rounding: toSignificantRounding[rounding]
@@ -2003,8 +2003,8 @@ var Fraction = /*#__PURE__*/function () {
       rounding = exports.Rounding.ROUND_HALF_UP;
     }
 
-    !Number.isInteger(decimalPlaces) ?  invariant(false, decimalPlaces + " is not an integer.")  : void 0;
-    !(decimalPlaces >= 0) ?  invariant(false, decimalPlaces + " is negative.")  : void 0;
+    !Number.isInteger(decimalPlaces) ? invariant(false, decimalPlaces + " is not an integer.") : void 0;
+    !(decimalPlaces >= 0) ? invariant(false, decimalPlaces + " is negative.") : void 0;
     Big.DP = decimalPlaces;
     Big.RM = toFixedRounding[rounding];
     return new Big(this.numerator.toString()).div(this.denominator.toString()).toFormat(decimalPlaces, format);
@@ -2058,12 +2058,12 @@ var CurrencyAmount = /*#__PURE__*/function (_Fraction) {
   var _proto = CurrencyAmount.prototype;
 
   _proto.add = function add(other) {
-    !currencyEquals(this.currency, other.currency) ?  invariant(false, 'TOKEN')  : void 0;
+    !currencyEquals(this.currency, other.currency) ? invariant(false, 'TOKEN') : void 0;
     return new CurrencyAmount(this.currency, JSBI.add(this.raw, other.raw));
   };
 
   _proto.subtract = function subtract(other) {
-    !currencyEquals(this.currency, other.currency) ?  invariant(false, 'TOKEN')  : void 0;
+    !currencyEquals(this.currency, other.currency) ? invariant(false, 'TOKEN') : void 0;
     return new CurrencyAmount(this.currency, JSBI.subtract(this.raw, other.raw));
   };
 
@@ -2088,7 +2088,7 @@ var CurrencyAmount = /*#__PURE__*/function (_Fraction) {
       rounding = exports.Rounding.ROUND_DOWN;
     }
 
-    !(decimalPlaces <= this.currency.decimals) ?  invariant(false, 'DECIMALS')  : void 0;
+    !(decimalPlaces <= this.currency.decimals) ? invariant(false, 'DECIMALS') : void 0;
     return _Fraction.prototype.toFixed.call(this, decimalPlaces, format, rounding);
   };
 
@@ -2128,12 +2128,12 @@ var TokenAmount = /*#__PURE__*/function (_CurrencyAmount) {
   var _proto = TokenAmount.prototype;
 
   _proto.add = function add(other) {
-    !this.token.equals(other.token) ?  invariant(false, 'TOKEN')  : void 0;
+    !this.token.equals(other.token) ? invariant(false, 'TOKEN') : void 0;
     return new TokenAmount(this.token, JSBI.add(this.raw, other.raw));
   };
 
   _proto.subtract = function subtract(other) {
-    !this.token.equals(other.token) ?  invariant(false, 'TOKEN')  : void 0;
+    !this.token.equals(other.token) ? invariant(false, 'TOKEN') : void 0;
     return new TokenAmount(this.token, JSBI.subtract(this.raw, other.raw));
   };
 
@@ -2159,8 +2159,8 @@ var Price = /*#__PURE__*/function (_Fraction) {
 
     for (var _iterator = _createForOfIteratorHelperLoose(route.pools.entries()), _step; !(_step = _iterator()).done;) {
       var _step$value = _step.value,
-          i = _step$value[0],
-          pool = _step$value[1];
+        i = _step$value[0],
+        pool = _step$value[1];
       prices.push(pool.priceOf(route.path[i], route.path[i + 1]));
     }
 
@@ -2176,20 +2176,20 @@ var Price = /*#__PURE__*/function (_Fraction) {
   };
 
   _proto.multiply = function multiply(other) {
-    !currencyEquals(this.quoteCurrency, other.baseCurrency) ?  invariant(false, 'TOKEN')  : void 0;
+    !currencyEquals(this.quoteCurrency, other.baseCurrency) ? invariant(false, 'TOKEN') : void 0;
 
     var fraction = _Fraction.prototype.multiply.call(this, other);
 
     return new Price(this.baseCurrency, other.quoteCurrency, fraction.denominator, fraction.numerator);
   } // performs floor division on overflow
-  ;
+    ;
 
   _proto.quote = function quote(currencyAmount, chainId) {
     if (chainId === void 0) {
       chainId = exports.ChainId.AVALANCHE;
     }
 
-    !currencyEquals(currencyAmount.currency, this.baseCurrency) ?  invariant(false, 'TOKEN')  : void 0;
+    !currencyEquals(currencyAmount.currency, this.baseCurrency) ? invariant(false, 'TOKEN') : void 0;
 
     if (this.quoteCurrency instanceof Token) {
       return new TokenAmount(this.quoteCurrency, _Fraction.prototype.multiply.call(this, currencyAmount.raw).quotient);
@@ -2235,21 +2235,21 @@ var Route = /*#__PURE__*/function () {
       hops = [];
     }
 
-    !(pools.length > 0) ?  invariant(false, 'PAIRS')  : void 0;
+    !(pools.length > 0) ? invariant(false, 'PAIRS') : void 0;
     !(pools.every(function (pool) {
       return pool.tokenCount === 2;
-    }) || hops.length === pools.length - 1) ?  invariant(false, 'HOPS')  : void 0;
+    }) || hops.length === pools.length - 1) ? invariant(false, 'HOPS') : void 0;
     var chainId = pools[0].chainId;
     !pools.every(function (pool) {
       return pool.chainId === chainId;
-    }) ?  invariant(false, 'CHAIN_IDS')  : void 0;
+    }) ? invariant(false, 'CHAIN_IDS') : void 0;
 
     if (input === CAVAX[chainId]) {
-      !pools[0].involvesToken(WAVAX[chainId]) ?  invariant(false, 'INPUT')  : void 0;
+      !pools[0].involvesToken(WAVAX[chainId]) ? invariant(false, 'INPUT') : void 0;
     }
 
     if (output === CAVAX[chainId]) {
-      !pools[pools.length - 1].involvesToken(WAVAX[chainId]) ?  invariant(false, 'OUTPUT')  : void 0;
+      !pools[pools.length - 1].involvesToken(WAVAX[chainId]) ? invariant(false, 'OUTPUT') : void 0;
     }
 
     var wrappedInput = input instanceof Token ? input : WAVAX[chainId];
@@ -2258,10 +2258,10 @@ var Route = /*#__PURE__*/function () {
 
     for (var _iterator = _createForOfIteratorHelperLoose(pools.entries()), _step; !(_step = _iterator()).done;) {
       var _step$value = _step.value,
-          i = _step$value[0],
-          pool = _step$value[1];
+        i = _step$value[0],
+        pool = _step$value[1];
       var inputToken = path[i];
-      !pool.involvesToken(inputToken) ?  invariant(false, 'PATH')  : void 0;
+      !pool.involvesToken(inputToken) ? invariant(false, 'PATH') : void 0;
       var outputToken = void 0;
 
       if (pool.tokenCount === 2) {
@@ -2269,8 +2269,8 @@ var Route = /*#__PURE__*/function () {
       } else {
         // When a pool has 3+ tokens we need `hops` to guarantee a deterministic path
         outputToken = i === pools.length ? wrappedOutput : hops[i];
-        !!inputToken.equals(outputToken) ?  invariant(false, 'DUPLICATE')  : void 0;
-        !pool.involvesToken(outputToken) ?  invariant(false, 'PATH')  : void 0;
+        !!inputToken.equals(outputToken) ? invariant(false, 'DUPLICATE') : void 0;
+        !pool.involvesToken(outputToken) ? invariant(false, 'PATH') : void 0;
       }
 
       path.push(outputToken);
@@ -2342,8 +2342,8 @@ function computePriceImpact(midPrice, inputAmount, outputAmount) {
 
 function inputOutputComparator(a, b) {
   // must have same input and output token for comparison
-  !currencyEquals(a.inputAmount.currency, b.inputAmount.currency) ?  invariant(false, 'INPUT_CURRENCY')  : void 0;
-  !currencyEquals(a.outputAmount.currency, b.outputAmount.currency) ?  invariant(false, 'OUTPUT_CURRENCY')  : void 0;
+  !currencyEquals(a.inputAmount.currency, b.inputAmount.currency) ? invariant(false, 'INPUT_CURRENCY') : void 0;
+  !currencyEquals(a.outputAmount.currency, b.outputAmount.currency) ? invariant(false, 'OUTPUT_CURRENCY') : void 0;
 
   if (a.outputAmount.equalTo(b.outputAmount)) {
     if (a.inputAmount.equalTo(b.inputAmount)) {
@@ -2396,7 +2396,7 @@ function wrappedAmount(currencyAmount, chainId) {
 
   if (currencyAmount instanceof TokenAmount) return currencyAmount;
   if (currencyAmount.currency === CAVAX[chainId]) return new TokenAmount(WAVAX[chainId], currencyAmount.raw);
-    invariant(false, 'CURRENCY')  ;
+  invariant(false, 'CURRENCY');
 }
 
 function wrappedCurrency(currency, chainId) {
@@ -2406,7 +2406,7 @@ function wrappedCurrency(currency, chainId) {
 
   if (currency instanceof Token) return currency;
   if (currency === CAVAX[chainId]) return WAVAX[chainId];
-    invariant(false, 'CURRENCY')  ;
+  invariant(false, 'CURRENCY');
 }
 /**
  * Represents a trade executed against a list of pools.
@@ -2424,8 +2424,8 @@ var Trade = /*#__PURE__*/function () {
       fee: ZERO_PERCENT,
       feeTo: ZERO_ADDRESS
     } : _temp,
-        fee = _ref.fee,
-        feeTo = _ref.feeTo;
+      fee = _ref.fee,
+      feeTo = _ref.feeTo;
 
     this.chainId = exports.ChainId.AVALANCHE;
     this.fee = new Percent(ZERO);
@@ -2435,15 +2435,15 @@ var Trade = /*#__PURE__*/function () {
     var fullOutputAmount;
 
     if (tradeType === exports.TradeType.EXACT_INPUT) {
-      !currencyEquals(amount.currency, route.input) ?  invariant(false, 'INPUT')  : void 0;
+      !currencyEquals(amount.currency, route.input) ? invariant(false, 'INPUT') : void 0;
       amounts[0] = wrappedAmount(amount, route.chainId);
 
       for (var i = 0; i < route.path.length - 1; i++) {
         var pool = route.pools[i];
 
         var _pool$getOutputAmount = pool.getOutputAmount(amounts[i], route.path[i + 1]),
-            outputAmount = _pool$getOutputAmount[0],
-            nextPool = _pool$getOutputAmount[1];
+          outputAmount = _pool$getOutputAmount[0],
+          nextPool = _pool$getOutputAmount[1];
 
         amounts[i + 1] = outputAmount;
         nextPools[i] = nextPool;
@@ -2453,7 +2453,7 @@ var Trade = /*#__PURE__*/function () {
       var userReceivedAmountOut = new Fraction(ONE).subtract(fee).multiply(fullOutputAmount.raw).quotient;
       amounts[amounts.length - 1] = new TokenAmount(fullOutputAmount.token, userReceivedAmountOut);
     } else {
-      !currencyEquals(amount.currency, route.output) ?  invariant(false, 'OUTPUT')  : void 0;
+      !currencyEquals(amount.currency, route.output) ? invariant(false, 'OUTPUT') : void 0;
 
       var _userReceivedAmountOut = wrappedAmount(amount, route.chainId);
 
@@ -2465,8 +2465,8 @@ var Trade = /*#__PURE__*/function () {
         var _pool = route.pools[_i - 1];
 
         var _pool$getInputAmount = _pool.getInputAmount(amounts[_i], route.path[_i - 1]),
-            inputAmount = _pool$getInputAmount[0],
-            _nextPool = _pool$getInputAmount[1];
+          inputAmount = _pool$getInputAmount[0],
+          _nextPool = _pool$getInputAmount[1];
 
         amounts[_i - 1] = inputAmount;
         nextPools[_i - 1] = _nextPool;
@@ -2502,14 +2502,14 @@ var Trade = /*#__PURE__*/function () {
 
     return new Trade(route, amountIn, exports.TradeType.EXACT_INPUT, chainId, daasOptions);
   }
-  /**
-   * Constructs an exact out trade with the given amount out and route
-   * @param route route of the exact out trade
-   * @param amountOut the amount returned by the trade
-   * @param chainId chain id
-   * @param daasOptions fee information possibly imposed via DEX as a service
-   */
-  ;
+    /**
+     * Constructs an exact out trade with the given amount out and route
+     * @param route route of the exact out trade
+     * @param amountOut the amount returned by the trade
+     * @param chainId chain id
+     * @param daasOptions fee information possibly imposed via DEX as a service
+     */
+    ;
 
   Trade.exactOut = function exactOut(route, amountOut, chainId, daasOptions) {
     if (chainId === void 0) {
@@ -2518,16 +2518,16 @@ var Trade = /*#__PURE__*/function () {
 
     return new Trade(route, amountOut, exports.TradeType.EXACT_OUTPUT, chainId, daasOptions);
   }
-  /**
-   * Get the minimum amount that must be received from this trade for the given slippage tolerance
-   * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
-   */
-  ;
+    /**
+     * Get the minimum amount that must be received from this trade for the given slippage tolerance
+     * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
+     */
+    ;
 
   var _proto = Trade.prototype;
 
   _proto.minimumAmountOut = function minimumAmountOut(slippageTolerance) {
-    !!slippageTolerance.lessThan(ZERO) ?  invariant(false, 'SLIPPAGE_TOLERANCE')  : void 0;
+    !!slippageTolerance.lessThan(ZERO) ? invariant(false, 'SLIPPAGE_TOLERANCE') : void 0;
 
     if (this.tradeType === exports.TradeType.EXACT_OUTPUT) {
       return this.outputAmount;
@@ -2536,14 +2536,14 @@ var Trade = /*#__PURE__*/function () {
       return this.outputAmount instanceof TokenAmount ? new TokenAmount(this.outputAmount.token, slippageAdjustedAmountOut) : CurrencyAmount.ether(slippageAdjustedAmountOut, this.chainId);
     }
   }
-  /**
-   * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
-   * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
-   */
-  ;
+    /**
+     * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
+     * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
+     */
+    ;
 
   _proto.maximumAmountIn = function maximumAmountIn(slippageTolerance) {
-    !!slippageTolerance.lessThan(ZERO) ?  invariant(false, 'SLIPPAGE_TOLERANCE')  : void 0;
+    !!slippageTolerance.lessThan(ZERO) ? invariant(false, 'SLIPPAGE_TOLERANCE') : void 0;
 
     if (this.tradeType === exports.TradeType.EXACT_INPUT) {
       return this.inputAmount;
@@ -2552,39 +2552,39 @@ var Trade = /*#__PURE__*/function () {
       return this.inputAmount instanceof TokenAmount ? new TokenAmount(this.inputAmount.token, slippageAdjustedAmountIn) : CurrencyAmount.ether(slippageAdjustedAmountIn, this.chainId);
     }
   }
-  /**
-   * Given a list of pools, and a fixed amount in, returns the top `maxNumResults` trades that go from an input token
-   * amount to an output token, making at most `maxHops` hops.
-   * Note this does not consider aggregation, as routes are linear. It's possible a better route exists by splitting
-   * the amount in among multiple routes.
-   * @param pools the pools to consider in finding the best trade
-   * @param currencyAmountIn exact amount of input currency to spend
-   * @param currencyOut the desired currency out
-   * @param maxNumResults maximum number of results to return
-   * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
-   * @param fee total fee possibly imposed via DEX as a service
-   * @param feeTo possible DEX as a service partner
-   * @param currentPools used in recursion; the current list of pools
-   * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
-   * @param originalAmountIn used in recursion; the original value of the currencyAmountIn parameter
-   * @param bestTrades used in recursion; the current list of best trades
-   */
-  ;
+    /**
+     * Given a list of pools, and a fixed amount in, returns the top `maxNumResults` trades that go from an input token
+     * amount to an output token, making at most `maxHops` hops.
+     * Note this does not consider aggregation, as routes are linear. It's possible a better route exists by splitting
+     * the amount in among multiple routes.
+     * @param pools the pools to consider in finding the best trade
+     * @param currencyAmountIn exact amount of input currency to spend
+     * @param currencyOut the desired currency out
+     * @param maxNumResults maximum number of results to return
+     * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
+     * @param fee total fee possibly imposed via DEX as a service
+     * @param feeTo possible DEX as a service partner
+     * @param currentPools used in recursion; the current list of pools
+     * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
+     * @param originalAmountIn used in recursion; the original value of the currencyAmountIn parameter
+     * @param bestTrades used in recursion; the current list of best trades
+     */
+    ;
 
   Trade.bestTradeExactIn = function bestTradeExactIn(pools, currencyAmountIn, currencyOut, _temp2, _temp3, // used in recursion.
-  currentPools, currentHops, originalAmountIn, bestTrades) {
+    currentPools, currentHops, originalAmountIn, bestTrades) {
     var _ref2 = _temp2 === void 0 ? {} : _temp2,
-        _ref2$maxNumResults = _ref2.maxNumResults,
-        maxNumResults = _ref2$maxNumResults === void 0 ? 3 : _ref2$maxNumResults,
-        _ref2$maxHops = _ref2.maxHops,
-        maxHops = _ref2$maxHops === void 0 ? 3 : _ref2$maxHops;
+      _ref2$maxNumResults = _ref2.maxNumResults,
+      maxNumResults = _ref2$maxNumResults === void 0 ? 3 : _ref2$maxNumResults,
+      _ref2$maxHops = _ref2.maxHops,
+      maxHops = _ref2$maxHops === void 0 ? 3 : _ref2$maxHops;
 
     var _ref3 = _temp3 === void 0 ? {
       fee: ZERO_PERCENT,
       feeTo: ZERO_ADDRESS
     } : _temp3,
-        fee = _ref3.fee,
-        feeTo = _ref3.feeTo;
+      fee = _ref3.fee,
+      feeTo = _ref3.feeTo;
 
     if (currentPools === void 0) {
       currentPools = [];
@@ -2602,11 +2602,11 @@ var Trade = /*#__PURE__*/function () {
       bestTrades = [];
     }
 
-    !(pools.length > 0) ?  invariant(false, 'POOLS')  : void 0;
-    !(maxHops > 0) ?  invariant(false, 'MAX_HOPS')  : void 0;
-    !(originalAmountIn === currencyAmountIn || currentPools.length > 0) ?  invariant(false, 'INVALID_RECURSION')  : void 0;
+    !(pools.length > 0) ? invariant(false, 'POOLS') : void 0;
+    !(maxHops > 0) ? invariant(false, 'MAX_HOPS') : void 0;
+    !(originalAmountIn === currencyAmountIn || currentPools.length > 0) ? invariant(false, 'INVALID_RECURSION') : void 0;
     var chainId = currencyAmountIn instanceof TokenAmount ? currencyAmountIn.token.chainId : currencyOut instanceof Token ? currencyOut.chainId : undefined;
-    !(chainId !== undefined) ?  invariant(false, 'CHAIN_ID')  : void 0;
+    !(chainId !== undefined) ? invariant(false, 'CHAIN_ID') : void 0;
     var amountIn = wrappedAmount(currencyAmountIn, chainId);
     var tokenIn = amountIn.token;
     var tokenOut = wrappedCurrency(currencyOut, chainId);
@@ -2668,40 +2668,40 @@ var Trade = /*#__PURE__*/function () {
 
     return bestTrades;
   }
-  /**
-   * similar to the above method but instead targets a fixed output amount
-   * given a list of pools, and a fixed amount out, returns the top `maxNumResults` trades that go from an input token
-   * to an output token amount, making at most `maxHops` hops
-   * note this does not consider aggregation, as routes are linear. it's possible a better route exists by splitting
-   * the amount in among multiple routes.
-   * @param pools the pools to consider in finding the best trade
-   * @param currencyIn the currency to spend
-   * @param currencyAmountOut the exact amount of currency out
-   * @param maxNumResults maximum number of results to return
-   * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
-   * @param fee total fee possibly imposed via DEX as a service
-   * @param feeTo possible DEX as a service partner
-   * @param currentPools used in recursion; the current list of pools
-   * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
-   * @param originalAmountOut used in recursion; the original value of the currencyAmountOut parameter
-   * @param bestTrades used in recursion; the current list of best trades
-   */
-  ;
+    /**
+     * similar to the above method but instead targets a fixed output amount
+     * given a list of pools, and a fixed amount out, returns the top `maxNumResults` trades that go from an input token
+     * to an output token amount, making at most `maxHops` hops
+     * note this does not consider aggregation, as routes are linear. it's possible a better route exists by splitting
+     * the amount in among multiple routes.
+     * @param pools the pools to consider in finding the best trade
+     * @param currencyIn the currency to spend
+     * @param currencyAmountOut the exact amount of currency out
+     * @param maxNumResults maximum number of results to return
+     * @param maxHops maximum number of hops a returned trade can make, e.g. 1 hop goes through a single pool
+     * @param fee total fee possibly imposed via DEX as a service
+     * @param feeTo possible DEX as a service partner
+     * @param currentPools used in recursion; the current list of pools
+     * @param currentHops used in recursion; the current list of intermediate hops for pools with 3+ assets
+     * @param originalAmountOut used in recursion; the original value of the currencyAmountOut parameter
+     * @param bestTrades used in recursion; the current list of best trades
+     */
+    ;
 
   Trade.bestTradeExactOut = function bestTradeExactOut(pools, currencyIn, currencyAmountOut, _temp4, _temp5, // used in recursion.
-  currentPools, currentHops, originalAmountOut, bestTrades) {
+    currentPools, currentHops, originalAmountOut, bestTrades) {
     var _ref4 = _temp4 === void 0 ? {} : _temp4,
-        _ref4$maxNumResults = _ref4.maxNumResults,
-        maxNumResults = _ref4$maxNumResults === void 0 ? 3 : _ref4$maxNumResults,
-        _ref4$maxHops = _ref4.maxHops,
-        maxHops = _ref4$maxHops === void 0 ? 3 : _ref4$maxHops;
+      _ref4$maxNumResults = _ref4.maxNumResults,
+      maxNumResults = _ref4$maxNumResults === void 0 ? 3 : _ref4$maxNumResults,
+      _ref4$maxHops = _ref4.maxHops,
+      maxHops = _ref4$maxHops === void 0 ? 3 : _ref4$maxHops;
 
     var _ref5 = _temp5 === void 0 ? {
       fee: ZERO_PERCENT,
       feeTo: ZERO_ADDRESS
     } : _temp5,
-        fee = _ref5.fee,
-        feeTo = _ref5.feeTo;
+      fee = _ref5.fee,
+      feeTo = _ref5.feeTo;
 
     if (currentPools === void 0) {
       currentPools = [];
@@ -2719,11 +2719,11 @@ var Trade = /*#__PURE__*/function () {
       bestTrades = [];
     }
 
-    !(pools.length > 0) ?  invariant(false, 'POOLS')  : void 0;
-    !(maxHops > 0) ?  invariant(false, 'MAX_HOPS')  : void 0;
-    !(originalAmountOut === currencyAmountOut || currentPools.length > 0) ?  invariant(false, 'INVALID_RECURSION')  : void 0;
+    !(pools.length > 0) ? invariant(false, 'POOLS') : void 0;
+    !(maxHops > 0) ? invariant(false, 'MAX_HOPS') : void 0;
+    !(originalAmountOut === currencyAmountOut || currentPools.length > 0) ? invariant(false, 'INVALID_RECURSION') : void 0;
     var chainId = currencyAmountOut instanceof TokenAmount ? currencyAmountOut.token.chainId : currencyIn instanceof Token ? currencyIn.chainId : undefined;
-    !(chainId !== undefined) ?  invariant(false, 'CHAIN_ID')  : void 0;
+    !(chainId !== undefined) ? invariant(false, 'CHAIN_ID') : void 0;
     var amountOut = wrappedAmount(currencyAmountOut, chainId);
     var tokenIn = wrappedCurrency(currencyIn, chainId);
     var tokenOut = amountOut.token;
@@ -2796,12 +2796,12 @@ var Pool = /*#__PURE__*/function () {
     });
     !addresses.every(function (address, i) {
       return addresses.indexOf(address) === i;
-    }) ?  invariant(false, 'DUPLICATE_TOKEN')  : void 0;
-    !(tokenAmounts.length > 0) ?  invariant(false, 'INSUFFICIENT_TOKENS')  : void 0;
+    }) ? invariant(false, 'DUPLICATE_TOKEN') : void 0;
+    !(tokenAmounts.length > 0) ? invariant(false, 'INSUFFICIENT_TOKENS') : void 0;
     !tokenAmounts.every(function (_ref) {
       var token = _ref.token;
       return token.chainId === chainId;
-    }) ?  invariant(false, 'CHAIN_MISMATCH')  : void 0;
+    }) ? invariant(false, 'CHAIN_MISMATCH') : void 0;
     this.chainId = chainId;
     this.liquidityToken = liquidityToken;
     this.tokenAmounts = tokenAmounts;
@@ -2825,7 +2825,7 @@ var Pool = /*#__PURE__*/function () {
       return tokenAmount.token.equals(token);
     });
   } // Reserves
-  ;
+    ;
 
   _proto.reserveOfIndex = function reserveOfIndex(index) {
     return this.tokenAmounts[index];
@@ -2833,10 +2833,10 @@ var Pool = /*#__PURE__*/function () {
 
   _proto.reserveOfToken = function reserveOfToken(token) {
     var index = this.tokenIndex(token);
-    !(index >= 0) ?  invariant(false, 'TOKEN_MISSING')  : void 0;
+    !(index >= 0) ? invariant(false, 'TOKEN_MISSING') : void 0;
     return this.tokenAmounts[index];
   } // Prices
-  ;
+    ;
 
   _proto.priceOf = function priceOf(baseToken, quoteToken) {
     return new Price(baseToken, quoteToken, this.reserveOfToken(baseToken).raw, this.reserveOfToken(quoteToken).raw);
@@ -2888,7 +2888,7 @@ var Pair = /*#__PURE__*/function (_Pool) {
     }
 
     var tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
-    ? [tokenAmountA, tokenAmountB] : [tokenAmountB, tokenAmountA];
+      ? [tokenAmountA, tokenAmountB] : [tokenAmountB, tokenAmountA];
     var decimals;
 
     if ([exports.ChainId.NEAR_TESTNET, exports.ChainId.NEAR_MAINNET].includes(chainId)) {
@@ -2897,14 +2897,14 @@ var Pair = /*#__PURE__*/function (_Pool) {
       decimals = 18;
     }
 
-    var liquidityToken = new Token(chainId, Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token, chainId), decimals, 'PGL', 'Pangolin Liquidity');
+    var liquidityToken = new Token(chainId, Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token, chainId), decimals, 'ARL', 'Arcanum Liquidity');
     return _Pool.call(this, chainId, liquidityToken, tokenAmounts) || this;
   }
 
   var _proto = Pair.prototype;
 
   _proto.getOutputAmount = function getOutputAmount(inputAmount, outputToken) {
-    !(this.involvesToken(inputAmount.token) && this.involvesToken(outputToken)) ?  invariant(false, 'TOKEN')  : void 0;
+    !(this.involvesToken(inputAmount.token) && this.involvesToken(outputToken)) ? invariant(false, 'TOKEN') : void 0;
 
     if (JSBI.equal(this.reserve0.raw, ZERO) || JSBI.equal(this.reserve1.raw, ZERO)) {
       throw new InsufficientReservesError();
@@ -2925,7 +2925,7 @@ var Pair = /*#__PURE__*/function (_Pool) {
   };
 
   _proto.getInputAmount = function getInputAmount(outputAmount, inputToken) {
-    !(this.involvesToken(outputAmount.token) && this.involvesToken(inputToken)) ?  invariant(false, 'TOKEN')  : void 0;
+    !(this.involvesToken(outputAmount.token) && this.involvesToken(inputToken)) ? invariant(false, 'TOKEN') : void 0;
 
     if (JSBI.equal(this.reserve0.raw, ZERO) || JSBI.equal(this.reserve1.raw, ZERO) || JSBI.greaterThanOrEqual(outputAmount.raw, this.reserveOfToken(outputAmount.token).raw)) {
       throw new InsufficientReservesError();
@@ -2940,11 +2940,11 @@ var Pair = /*#__PURE__*/function (_Pool) {
   };
 
   _proto.getLiquidityMinted = function getLiquidityMinted(totalSupply, depositTokenAmounts) {
-    !totalSupply.token.equals(this.liquidityToken) ?  invariant(false, 'LIQUIDITY')  : void 0;
-    !(depositTokenAmounts.length === 2) ?  invariant(false, 'LIQUIDITY_TOKENS')  : void 0;
+    !totalSupply.token.equals(this.liquidityToken) ? invariant(false, 'LIQUIDITY') : void 0;
+    !(depositTokenAmounts.length === 2) ? invariant(false, 'LIQUIDITY_TOKENS') : void 0;
     var tokenAmounts = depositTokenAmounts[0].token.sortsBefore(depositTokenAmounts[1].token) // does safety checks
-    ? [depositTokenAmounts[0], depositTokenAmounts[1]] : [depositTokenAmounts[1], depositTokenAmounts[0]];
-    !(tokenAmounts[0].token.equals(this.token0) && tokenAmounts[1].token.equals(this.token1)) ?  invariant(false, 'TOKEN')  : void 0;
+      ? [depositTokenAmounts[0], depositTokenAmounts[1]] : [depositTokenAmounts[1], depositTokenAmounts[0]];
+    !(tokenAmounts[0].token.equals(this.token0) && tokenAmounts[1].token.equals(this.token1)) ? invariant(false, 'TOKEN') : void 0;
     var liquidity;
 
     if (JSBI.equal(totalSupply.raw, ZERO)) {
@@ -2963,15 +2963,15 @@ var Pair = /*#__PURE__*/function (_Pool) {
   };
 
   _proto.getLiquidityValues = function getLiquidityValues(totalSupply, liquidity, options) {
-    !totalSupply.token.equals(this.liquidityToken) ?  invariant(false, 'TOTAL_SUPPLY')  : void 0;
-    !liquidity.token.equals(this.liquidityToken) ?  invariant(false, 'LIQUIDITY')  : void 0;
-    !JSBI.lessThanOrEqual(liquidity.raw, totalSupply.raw) ?  invariant(false, 'LIQUIDITY')  : void 0;
+    !totalSupply.token.equals(this.liquidityToken) ? invariant(false, 'TOTAL_SUPPLY') : void 0;
+    !liquidity.token.equals(this.liquidityToken) ? invariant(false, 'LIQUIDITY') : void 0;
+    !JSBI.lessThanOrEqual(liquidity.raw, totalSupply.raw) ? invariant(false, 'LIQUIDITY') : void 0;
     var totalSupplyAdjusted;
 
     if (!(options !== null && options !== void 0 && options.feeOn)) {
       totalSupplyAdjusted = totalSupply;
     } else {
-      !!!(options !== null && options !== void 0 && options.kLast) ?  invariant(false, 'K_LAST')  : void 0;
+      !!!(options !== null && options !== void 0 && options.kLast) ? invariant(false, 'K_LAST') : void 0;
       var kLastParsed = parseBigintIsh(options.kLast);
 
       if (!JSBI.equal(kLastParsed, ZERO)) {
@@ -3065,14 +3065,14 @@ var Vault = /*#__PURE__*/function (_Pool) {
       chainId = exports.ChainId.NEAR_TESTNET;
     }
 
-    !(JSBI.greaterThanOrEqual(amp, ONE) && JSBI.lessThanOrEqual(amp, JSBI.BigInt(1000000))) ?  invariant(false, 'AMP_ILLEGAL')  : void 0;
+    !(JSBI.greaterThanOrEqual(amp, ONE) && JSBI.lessThanOrEqual(amp, JSBI.BigInt(1000000))) ? invariant(false, 'AMP_ILLEGAL') : void 0;
     !tokenAmounts.every(function (_ref) {
       var token = _ref.token;
       return token.decimals >= 1 && token.decimals <= 24;
-    }) ?  invariant(false, 'DECIMAL_ILLEGAL')  : void 0;
+    }) ? invariant(false, 'DECIMAL_ILLEGAL') : void 0;
     var liquidityToken = new Token(chainId, Vault.getAddress(tokenAmounts.map(function (tokenAmount) {
       return tokenAmount.token;
-    })), 18, 'PGL', 'Pangolin Liquidity');
+    })), 18, 'ARL', 'Arcanum Liquidity');
     _this = _Pool.call(this, chainId, liquidityToken, tokenAmounts) || this;
     _this.amp = amp;
     return _this;
@@ -3109,19 +3109,19 @@ var Vault = /*#__PURE__*/function (_Pool) {
       return JSBI.multiply(c_amount, _factor2);
     }
   }
-  /**
-   * Returns the swap fee coefficient (x / DIVISOR) for swaps utilizing the vault.
-   * Where (1 - (x/DIVISOR)) of each swap belongs to the LPs
-   */
-  ;
+    /**
+     * Returns the swap fee coefficient (x / DIVISOR) for swaps utilizing the vault.
+     * Where (1 - (x/DIVISOR)) of each swap belongs to the LPs
+     */
+    ;
 
   var _proto = Vault.prototype;
 
   _proto.getOutputAmount = function getOutputAmount(inputAmount, outputToken) {
     var in_token_i = this.tokens.indexOf(inputAmount.token);
     var out_token_i = this.tokens.indexOf(outputToken);
-    !(in_token_i >= 0 && in_token_i < this.tokenCount) ?  invariant(false, 'TOKEN_IN_I')  : void 0;
-    !(out_token_i >= 0 && out_token_i < this.tokenCount) ?  invariant(false, 'TOKEN_OUT_I')  : void 0;
+    !(in_token_i >= 0 && in_token_i < this.tokenCount) ? invariant(false, 'TOKEN_IN_I') : void 0;
+    !(out_token_i >= 0 && out_token_i < this.tokenCount) ? invariant(false, 'TOKEN_OUT_I') : void 0;
 
     if (this.reserveOfToken(outputToken).equalTo(ZERO)) {
       throw new InsufficientReservesError();
@@ -3140,25 +3140,25 @@ var Vault = /*#__PURE__*/function (_Pool) {
     newTokenAmounts[in_token_i] = newTokenAmounts[in_token_i].add(inputAmount);
     newTokenAmounts[out_token_i] = newTokenAmounts[out_token_i].subtract(new TokenAmount(outputToken, outputAmountWithFee));
     var newOutputTokenReserve_c = Vault.amount_to_c_amount(newTokenAmounts[out_token_i].raw, outputToken.decimals);
-    !JSBI.greaterThanOrEqual(newOutputTokenReserve_c, MIN_RESERVE) ?  invariant(false, 'MIN_RESERVE')  : void 0;
+    !JSBI.greaterThanOrEqual(newOutputTokenReserve_c, MIN_RESERVE) ? invariant(false, 'MIN_RESERVE') : void 0;
     return [new TokenAmount(outputToken, outputAmountWithFee), new Vault(newTokenAmounts, this.amp, this.chainId)];
   };
 
   _proto.getInputAmount = function getInputAmount(_outputToken, _inputToken) {
     throw new MethodNotSupported();
   } // Depositing X tokens for ? liquidity shares
-  ;
+    ;
 
   _proto.getLiquidityMinted = function getLiquidityMinted(totalSupply, depositTokenAmounts) {
-    !totalSupply.token.equals(this.liquidityToken) ?  invariant(false, 'LIQUIDITY')  : void 0;
-    !(depositTokenAmounts.length <= this.tokenCount) ?  invariant(false, 'LIQUIDITY_TOKENS')  : void 0;
+    !totalSupply.token.equals(this.liquidityToken) ? invariant(false, 'LIQUIDITY') : void 0;
+    !(depositTokenAmounts.length <= this.tokenCount) ? invariant(false, 'LIQUIDITY_TOKENS') : void 0;
     var deposit_c_amounts = [];
 
     for (var i = 0; i < this.tokenCount; i++) {
       var deposit = depositTokenAmounts[i];
 
       if (deposit) {
-        !this.involvesToken(deposit.token) ?  invariant(false, 'LIQUIDITY_TOKENS')  : void 0;
+        !this.involvesToken(deposit.token) ? invariant(false, 'LIQUIDITY_TOKENS') : void 0;
         deposit_c_amounts[i] = Vault.amount_to_c_amount(deposit.raw, deposit.token.decimals);
       } else {
         deposit_c_amounts[i] = ZERO;
@@ -3196,12 +3196,12 @@ var Vault = /*#__PURE__*/function (_Pool) {
     var mint_shares = JSBI.divide(JSBI.multiply(totalSupply.raw, JSBI.subtract(d_2, d_0)), d_0);
     return new TokenAmount(this.liquidityToken, mint_shares);
   } // Redeeming X liquidity shares for ? (all) tokens
-  ;
+    ;
 
   _proto.getLiquidityValues = function getLiquidityValues(totalSupply, shares) {
-    !totalSupply.token.equals(this.liquidityToken) ?  invariant(false, 'TOTAL_SUPPLY')  : void 0;
-    !shares.token.equals(this.liquidityToken) ?  invariant(false, 'LIQUIDITY')  : void 0;
-    !JSBI.lessThanOrEqual(shares.raw, totalSupply.raw) ?  invariant(false, 'LIQUIDITY')  : void 0;
+    !totalSupply.token.equals(this.liquidityToken) ? invariant(false, 'TOTAL_SUPPLY') : void 0;
+    !shares.token.equals(this.liquidityToken) ? invariant(false, 'LIQUIDITY') : void 0;
+    !JSBI.lessThanOrEqual(shares.raw, totalSupply.raw) ? invariant(false, 'LIQUIDITY') : void 0;
     var liquidityTokenValues = [];
     var c_amounts = this.reserves_c;
 
@@ -3209,24 +3209,24 @@ var Vault = /*#__PURE__*/function (_Pool) {
       var amount = JSBI.equal(totalSupply.raw, ZERO) ? ZERO : JSBI.divide(JSBI.multiply(this.tokenAmounts[i].raw, shares.raw), totalSupply.raw);
       var amount_c = Vault.amount_to_c_amount(amount, this.tokenAmounts[i].token.decimals);
       var remaining_amount_c = JSBI.subtract(c_amounts[i], amount_c);
-      !JSBI.greaterThanOrEqual(remaining_amount_c, MIN_RESERVE) ?  invariant(false, 'MIN_RESERVE')  : void 0;
+      !JSBI.greaterThanOrEqual(remaining_amount_c, MIN_RESERVE) ? invariant(false, 'MIN_RESERVE') : void 0;
       liquidityTokenValues[i] = new TokenAmount(this.tokenAmounts[i].token, amount);
     }
 
     return liquidityTokenValues;
   } // Withdrawing X tokens in exchange for ? liquidity shares
-  ;
+    ;
 
   _proto.getLiquidityValuesByTokens = function getLiquidityValuesByTokens(totalSupply, withdrawTokenAmounts) {
-    !totalSupply.token.equals(this.liquidityToken) ?  invariant(false, 'LIQUIDITY')  : void 0;
-    !(withdrawTokenAmounts.length <= this.tokenCount) ?  invariant(false, 'LIQUIDITY_TOKENS')  : void 0;
+    !totalSupply.token.equals(this.liquidityToken) ? invariant(false, 'LIQUIDITY') : void 0;
+    !(withdrawTokenAmounts.length <= this.tokenCount) ? invariant(false, 'LIQUIDITY_TOKENS') : void 0;
     var removed_c_amounts = [];
 
     for (var i = 0; i < this.tokenCount; i++) {
       var withdrawal = withdrawTokenAmounts[i];
 
       if (withdrawal) {
-        !this.involvesToken(withdrawal.token) ?  invariant(false, 'LIQUIDITY_TOKENS')  : void 0;
+        !this.involvesToken(withdrawal.token) ? invariant(false, 'LIQUIDITY_TOKENS') : void 0;
         removed_c_amounts[i] = Vault.amount_to_c_amount(withdrawal.raw, withdrawal.token.decimals);
       } else {
         removed_c_amounts[i] = ZERO;
@@ -3241,7 +3241,7 @@ var Vault = /*#__PURE__*/function (_Pool) {
 
     for (var _i3 = 0; _i3 < old_c_amounts.length; _i3++) {
       c_amounts[_i3] = JSBI.subtract(old_c_amounts[_i3], removed_c_amounts[_i3]);
-      !JSBI.greaterThanOrEqual(c_amounts[_i3], MIN_RESERVE) ?  invariant(false, 'MIN_RESERVE')  : void 0;
+      !JSBI.greaterThanOrEqual(c_amounts[_i3], MIN_RESERVE) ? invariant(false, 'MIN_RESERVE') : void 0;
     }
 
     var d_1 = this.calc_d(this.amp, c_amounts);
@@ -3374,7 +3374,7 @@ var Router = /*#__PURE__*/function () {
   /**
    * Cannot be constructed.
    */
-  function Router() {}
+  function Router() { }
   /**
    * Produces the on-chain method name to call and the hex encoded parameters to pass as arguments for a given trade.
    * @param trade to produce call parameters for
@@ -3387,8 +3387,8 @@ var Router = /*#__PURE__*/function () {
     var etherIn = trade.inputAmount.currency === CAVAX[chainId];
     var etherOut = trade.outputAmount.currency === CAVAX[chainId]; // the router does not support both ether in and out
 
-    !!(etherIn && etherOut) ?  invariant(false, 'ETHER_IN_OUT')  : void 0;
-    !(!('ttl' in options) || options.ttl > 0) ?  invariant(false, 'TTL')  : void 0;
+    !!(etherIn && etherOut) ? invariant(false, 'ETHER_IN_OUT') : void 0;
+    !(!('ttl' in options) || options.ttl > 0) ? invariant(false, 'TTL') : void 0;
     var feeToDaaS = validateAndParseAddress(trade.feeTo);
     var isDaaS = Boolean(feeToDaaS !== ZERO_ADDRESS && !trade.fee.equalTo(ZERO));
     var to = validateAndParseAddress(options.recipient);
@@ -3422,7 +3422,7 @@ var Router = /*#__PURE__*/function () {
         break;
 
       case exports.TradeType.EXACT_OUTPUT:
-        !!useFeeOnTransfer ?  invariant(false, 'EXACT_OUT_FOT')  : void 0;
+        !!useFeeOnTransfer ? invariant(false, 'EXACT_OUT_FOT') : void 0;
 
         if (etherIn) {
           methodName = 'swapAVAXForExactTokens';
@@ -3452,40 +3452,40 @@ var Router = /*#__PURE__*/function () {
 }();
 
 var ERC20 = [
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "decimals",
-		outputs: [
-			{
-				name: "",
-				type: "uint8"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "",
-				type: "address"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
+  {
+    constant: true,
+    inputs: [
+    ],
+    name: "decimals",
+    outputs: [
+      {
+        name: "",
+        type: "uint8"
+      }
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "balanceOf",
+    outputs: [
+      {
+        name: "",
+        type: "uint256"
+      }
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  }
 ];
 
 var TOKEN_DECIMALS_CACHE = {};
@@ -3497,7 +3497,7 @@ var Fetcher = /*#__PURE__*/function () {
   /**
    * Cannot be constructed.
    */
-  function Fetcher() {}
+  function Fetcher() { }
   /**
    * Fetch information for a given token on the given chain, using the given ethers provider.
    * @param chainId chain of the token
@@ -3531,13 +3531,13 @@ var Fetcher = /*#__PURE__*/function () {
       return Promise.reject(e);
     }
   }
-  /**
-   * Fetches information about a pair and constructs a pair from the given two tokens.
-   * @param tokenA first token
-   * @param tokenB second token
-   * @param provider the provider to use to fetch the data
-   */
-  ;
+    /**
+     * Fetches information about a pair and constructs a pair from the given two tokens.
+     * @param tokenA first token
+     * @param tokenB second token
+     * @param provider the provider to use to fetch the data
+     */
+    ;
 
   Fetcher.fetchPairData = function fetchPairData(tokenA, tokenB, provider) {
     try {
@@ -3546,7 +3546,7 @@ var Fetcher = /*#__PURE__*/function () {
       var address = Pair.getAddress(tokenA, tokenB, tokenA.chainId);
       return Promise.resolve(new contracts.Contract(address, IPangolinPair.abi, provider).getReserves()).then(function (_ref) {
         var reserves0 = _ref[0],
-            reserves1 = _ref[1];
+          reserves1 = _ref[1];
         var balances = tokenA.sortsBefore(tokenB) ? [reserves0, reserves1] : [reserves1, reserves0];
         return new Pair(new TokenAmount(tokenA, balances[0]), new TokenAmount(tokenB, balances[1]), tokenA.chainId);
       });
