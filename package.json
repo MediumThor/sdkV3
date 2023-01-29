@@ -1,5 +1,5 @@
 {
-  "name": "@pangolindex/sdk",
+  "name": "@arcanumdex/sdk",
   "license": "MIT",
   "version": "3.1.3",
   "description": "🛠 An SDK for building applications on top of Pangolin.",
@@ -8,7 +8,6 @@
   "files": [
     "dist"
   ],
- 
   "module": "dist/sdk.esm.js",
   "scripts": {
     "lint": "tsdx lint src test",
