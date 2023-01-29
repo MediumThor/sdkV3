@@ -224,7 +224,7 @@ var AVALANCHE_FUJI = {
     router: '0x458b63e266161f4a986Db215C479acf9740e346A',
     router_daas: '0xFE97f59B72eEE0F29F93e12195C6F35DCdAB6899',
     wrapped_native_token: '0xd00ae08403B9bbb9124bB305C09058E32C39A48c',
-    timelock: "0x6F5115b5D5f9d9d5d3690f0C0e12e81500fe9d7F",
+    timelock: "0x084B18a2a63853b246C730c7A9f9B760c705053f",
     mini_chef: {
       address: '0x4b757aE26cBB877f619003398Ecc438d57A9D49E',
       active: true,
@@ -241,7 +241,7 @@ var AVALANCHE_FUJI = {
     fee_collector: "0xe73fa0A2653d1118EbFD095De4c8776A54944732",
     multicall: '0xb465Fd2d9C71d5D6e6c069aaC9b4E21c69aAA78f',
     staking: [{
-      address: "0x92f53B0ba9013b444b7a68210C0cfd1e30e21C93",
+      address: "0xa5B1C3a38a667a2ed90B18c92ED5375273247582",
       active: true,
       reward_token: "0x85C9192a1088ce572D50E62F6e662Bcd345184C9",
       type: StakingType.LEGACY
